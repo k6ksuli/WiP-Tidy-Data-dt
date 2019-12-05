@@ -103,7 +103,7 @@ Based on our findings above, we can "skip" the first four lines and treat the
 fifth line as column (variable) names. Also note the use of the `check.names`
 argument to ensure that the column names are compliant in R.
 
-```{r readData, collapse=TRUE}
+```{r readData1, collapse=TRUE}
 library(data.table)
 library(here)
 wip <- fread(here("data", "WB-WiP.csv"), 
@@ -113,9 +113,25 @@ wip <- fread(here("data", "WB-WiP.csv"),
 
 # Continue from here...
 
+# Checks
+
+```{r checks1}
+wip[, .N, by=.(V65)]
+wip[, .N, by=.(Indicator.Name)]
+wip[, .N, by=.(Indicator.Code)]
+```
 
 
+# Removing columns
 
+```{r removals1}
+wip[, c("Indicator.Name", "Indicator.Code", "V65"):=NULL]
+
+setnames(wip, c("Country.Name", "Country.Code"), c("Country", "Code"))
+
+head(names(wip))
+tail(names(wip))
+```
 
 
 
