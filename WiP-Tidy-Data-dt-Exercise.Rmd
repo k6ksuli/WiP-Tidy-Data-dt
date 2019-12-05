@@ -133,6 +133,18 @@ head(names(wip))
 tail(names(wip))
 ```
 
+# Reshaping to long format
+
+```{r reshape1}
+WP <- melt(wip, 
+           id.vars = c("Country", "Code"),
+           measure = patterns("^X"),
+           variable.name = "YearC",
+           value.name = c("pctWiP"),
+           na.rm = TRUE)
+```
+
+
 
 
 ```{r imageEnd, echo=FALSE, out.width="60%"}
