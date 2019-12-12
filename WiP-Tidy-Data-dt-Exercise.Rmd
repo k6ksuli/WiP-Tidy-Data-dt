@@ -179,6 +179,36 @@ ggplot(aes(Year, pctWiP, group = Country, colour = Country)) +
  In 1997 Estonia had 10.9% of women in parliament. Since then, the proportion of women in parliament has been non-decreasing in most of the years, only in 2011 and 2014 proportion of women in parliament was lower than in 2010 and 2013 respectively. In 2018, the proportion of women in parliament in Estonia was 26.7%. 
 In 1997, Portugal had 2.1%p higher proportion of women in parliament than Estonia. From 1997 to 2006, Portugal had at most 3%p higher proportion, but the difference increased to 7.5%p in 2007 and remained between 4.6%p to 14.3%p from 2007 to 2018. In 2018 Portugal had 8.1%p higher proportion of women in parliament than Estonia.
 
+## Portugal versus European Union (EU) coutries
+
+```{r timetrends2}
+WP[Country %in% c("Portugal", "Sweden", "Spain", "Hungary", "Romania", "European Union", "Finland", "Germany")] %>%
+  ggplot(aes(Year, pctWiP, colour = Country)) +
+  geom_line() +
+  geom_point() +
+  scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(limits = c(0, 50), breaks= seq(0, 50, by=10)) +
+  ggtitle("Women in Parliament: EU Countries") +
+  ylab("% Women in Parliament")
+```
+## Estonia versus European Union (EU) countries
+
+```{r timetrends2}
+WP[Country %in% c("Estonia", "Germany", "Latvia", "Lithuania", "Spain", "European Union", "Italy")] %>%
+  ggplot(aes(Year, pctWiP, colour = Country)) +
+  geom_line() +
+  geom_point() +
+  scale_x_continuous(breaks = seq(1990, 2020, 5)) +
+  scale_y_continuous(limits = c(0, 50), breaks= seq(0, 50, by=10)) +
+  ggtitle("Women in Parliament: EU Countries") +
+  ylab("% Women in Parliament")
+```
+
+## Interpretation
+Estonia, Latvia and in most the years also Lithuania has had proportion of women in parliament below the average of EU countries.
+Germany and Spain are above average of EU. Italy was below average of EU until 2012, but above average since 2013.
+
+
 ```{r imageEnd, echo=FALSE, out.width="60%"}
 knitr::include_graphics("images/Women_in_Parliament_rect.svg")
 ```
