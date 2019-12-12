@@ -274,6 +274,33 @@ WP[Country %in% dclpct] %>%
 ```
 
 
+# Global ranks by year
+
+```{r globran 1}
+cWP[!is.na(Continent), 
+  `:=`(RankG = rank(-pctWiP), TotalG = .N),
+  by = .(Year)]
+```
+
+## Global ranking - Portugal
+
+```{r globran2}
+cWP[Country=="Portugal",
+    .(Country, Year, pctWiP, Ratio, RankG, TotalG)][
+      order(Year)]
+```
+
+```{r globran3}
+cWP[Country=="Estonia",
+    .(Country, Year, pctWiP, Ratio, RankG, TotalG)][
+      order(Year)]
+```
+
+
+# Continent ranks by year
+
+
+
 
 
 ```{r imageEnd, echo=FALSE, out.width="60%"}
